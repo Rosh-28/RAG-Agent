@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+streamlit
+requests
+faiss-cpu
+numpy
+pypdf
+python-multipart
+slowapi

@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+venv/
+.env/
+data/faiss.index
+data/metadata.pkl
+.DS_Store
+Thumbs.db
