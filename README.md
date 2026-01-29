@@ -68,6 +68,7 @@ rag-document-qna/
 ```
 
 # 5️⃣ Run the Application:
+Run the commands in separate terminals:
 ```bash
 ollama serve
 uvicorn app:app --reload
@@ -87,29 +88,6 @@ http://localhost:8501
 
 The system uses a Streamlit frontend connected to a FastAPI backend, where documents are embedded using Ollama, stored in FAISS for semantic retrieval, and combined with an LLM to generate context-aware answers using a RAG pipeline.
 
-```
-User
- │
- ▼
-Streamlit UI
- │  (upload documents / ask questions)
- ▼
-FastAPI Backend
- │
- ├── Document Ingestion Pipeline
- │   ├─ PDF / TXT Loader
- │   ├─ Text Chunking
- │   ├─ Embedding Generation (Ollama – nomic-embed-text)
- │   ├─ Vector Storage (FAISS)
- │
- └── Query Pipeline
-     ├─ Query Embedding
-     ├─ Similarity Search (FAISS)
-     ├─ Context Retrieval (Top-k chunks)
-     ├─ Answer Generation (Ollama LLM)
-     └─ Response to UI
-```
-
 The Streamlit frontend provides a simple interface for uploading PDF or TXT documents and asking questions. User requests are sent to a FastAPI backend, which acts as the central controller. FastAPI handles request validation, rate limiting, document ingestion, and query processing.
 
 When a document is uploaded, the backend saves it locally and processes it through an ingestion pipeline that includes text extraction, chunking, and embedding generation using Ollama’s nomic-embed-text model. The resulting embeddings are stored in a FAISS vector index along with metadata, enabling efficient semantic retrieval.
@@ -121,7 +99,7 @@ Clear separation of frontend, backend, and retrieval layers
 Fast semantic search using FAISS
 
 ## Architecture Flow 
- ![langgraph_model ss](graph.png)
+ ![Flow](Rag.png)
 
 
 ## Chunk Size Selection

@@ -7,8 +7,8 @@ import requests
 from slowapi import Limiter
 from slowapi.util import get_remote_address
 from fastapi import FastAPI, Request
-from slowapi.errors import RateLimitExceeded
-from fastapi.responses import JSONResponse
+# from slowapi.errors import RateLimitExceeded
+# from fastapi.responses import JSONResponse
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -49,7 +49,7 @@ async def upload_doc(file: UploadFile):
 
 @app.post("/ask")
 @limiter.limit("5/minute")
-async def ask(question: str):
+async def ask(request: Request, question: str):
     chunks, scores = retrieve_chunks(question)
 
     context = "\n\n".join(chunks)

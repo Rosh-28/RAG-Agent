@@ -10,6 +10,7 @@ def retrieve_chunks(query, k=3):
         metadata = pickle.load(f)
 
     q_emb = get_embedding(query).reshape(1, -1)
+    faiss.normalize_L2(q_emb)
     distances, indices = index.search(q_emb, k)
 
     results = []

@@ -30,9 +30,10 @@ def ingest_document(text: str, source: str):
             "text": chunk
         })
 
-    dim = len(embeddings[0])
-    index = faiss.IndexFlatIP(dim)
-    index.add(np.array(embeddings))
+    vectors = np.array(embeddings).astype("float32")
+    faiss.normalize_L2(vectors)
+    index = faiss.IndexFlatIP(vectors.shape[1])
+    index.add(vectors)
 
     faiss.write_index(index, "data/faiss.index")
     with open("data/metadata.pkl", "wb") as f:
