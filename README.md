@@ -25,7 +25,7 @@ Make sure you have the following installed:
 # 1️⃣ Clone the Repository
 ```bash
 git clone <your-github-repo-url>
-cd RAG
+cd RAG-Agent
 ```
 
 # 2️⃣ Install Dependencies
@@ -43,7 +43,7 @@ ollama pull nomic-embed-text
 # 4️⃣ Project Structure:
 
 ```
-rag-document-qna/
+RAG-Agent/
 │
 ├── app.py                 # FastAPI backend (upload & QnA APIs)
 ├── streamlit_app.py       # Streamlit frontend for user interaction
